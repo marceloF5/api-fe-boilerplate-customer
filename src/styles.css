@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+.header {
+    color: #ee6e73;
+    font-weight: 300;
+}
+
+.redIcon {
+    color: #ee6e73 !important
+}
+
+ /* label focus color */
+.input-field input:focus + label {
+    color:#ee6e73 !important;
+}
+/* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid #ee6e73 !important;
+    box-shadow: 0 1px 0 0 #ee6e73 !important;
+}
+
+.textarea input:focus + label {
+    color:#ee6e73 !important;
+}
+/* label underline focus color */
+.textarea input:focus {
+    border-bottom: 1px solid #ee6e73 !important;
+    box-shadow: 0 1px 0 0 #ee6e73 !important;
+}
