@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
@@ -13,7 +12,7 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [    
     BrowserModule,    
-    MaterializeModule,
+    MaterializeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
