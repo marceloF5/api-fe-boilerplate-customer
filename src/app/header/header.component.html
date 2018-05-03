@@ -2,24 +2,24 @@
   <div class="navbar-fixed">  
     <nav class="navfeature white">
       <div class="nav-wrapper"> 
-        <a href="main.html" class="black-text brand-logo center">Logo</a>
+        <a [routerLink]="['/products']" class="black-text brand-logo center">Logo</a>
         <ul class="hide-on-med-and-down left">
-          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="main.html">Início</a></li>
-          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="orders-add.html">Adicionar Pedido</a></li>
-          <li><a class="black-text dropdown-button" data-hover="true" data-constrainwidth="false" data-beloworigin="true" data-activates='dropdown1' style="font-weight:300;font-size:1.rem;" href="#">Gestão</a></li>
+          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']">Início</a></li>
+          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']">Adicionar Pedido</a></li>
+          <li><a class="black-text dropdown-button" data-hover="true" data-constrainwidth="false" data-beloworigin="true" data-activates='dropdown1' style="font-weight:300;font-size:1.rem;">Gestão</a></li>
         </ul>	
         <ul class="hide-on-med-and-down right">
-          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="settings.html">Configurações</a></li>
-          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="login.html"><i class="material-icons">exit_to_app</i></a></li>
+          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']">Configurações</a></li>
+          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">exit_to_app</i></a></li>
         </ul>				          
       </div>
     </nav>
   </div>       
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
-    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="orders.html"><i class="material-icons">add_shopping_cart</i><span>Pedidos</span></a></li>
-    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="products.html"><i class="material-icons">code</i><span>Produtos</span></a></li>
-    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="customers.html"><i class="material-icons">nature_people</i><span>Clientes</span></a></li>
-    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" href="finances.html"><i class="material-icons">attach_money</i><span>Financeiro</span></a></li>        
+    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">add_shopping_cart</i><span>Pedidos</span></a></li>
+    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">code</i><span>Produtos</span></a></li>
+    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">nature_people</i><span>Clientes</span></a></li>
+    <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">attach_money</i><span>Financeiro</span></a></li>        
   </ul>       
 </header>
