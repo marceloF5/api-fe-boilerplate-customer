@@ -1,4 +1,4 @@
-<header class="no-padding">  
+<header class="no-padding" *ngIf="showMenu">  
   <div class="navbar-fixed">  
     <nav class="navfeature white">
       <div class="nav-wrapper"> 
@@ -6,17 +6,17 @@
         <ul class="hide-on-med-and-down left">
           <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']">Início</a></li>
           <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']">Adicionar Pedido</a></li>
-          <li><a class="black-text dropdown-button" data-hover="true" data-constrainwidth="false" data-beloworigin="true" data-activates='dropdown1' style="font-weight:300;font-size:1.rem;">Gestão</a></li>
+          <li><a class="black-text dropdown-button" data-hover="true" data-constrainwidth="false" materialize="dropdown" [materializeActions]="dropdownActions" data-beloworigin="true" data-activates='dropdown_menu' style="font-weight:300;font-size:1.rem;">Gestão</a></li>              
         </ul>	
         <ul class="hide-on-med-and-down right">
           <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']">Configurações</a></li>
-          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">exit_to_app</i></a></li>
+          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/login']"><i class="material-icons">exit_to_app</i></a></li>
         </ul>				          
       </div>
     </nav>
   </div>       
   <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
+  <ul id='dropdown_menu' class='dropdown-content'>
     <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">add_shopping_cart</i><span>Pedidos</span></a></li>
     <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">code</i><span>Produtos</span></a></li>
     <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">nature_people</i><span>Clientes</span></a></li>

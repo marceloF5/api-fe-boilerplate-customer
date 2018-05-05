@@ -1,0 +1,45 @@
+<div class="center">
+  <!--img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" /-->
+  <div class="col xs12 s12 m12 l12">
+    <div class="row">
+      <h5 class="header">Por favor, acesse com o login e senha</h5>
+    </div>
+  </div>
+  <div class="container">
+    <div class="z-depth-1 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+      <form class="col s12" method="post" [formGroup]="loginForm">
+        <div class='row'>
+          <div class='col s12'>
+
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='input-field col s12'>
+            <input type='email' formControlName="email">
+            <label for='email'>Email</label>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='input-field col s12'>
+            <input type='password' formControlName="email">
+            <label for='password'>Senha</label>
+          </div>
+          <label style='float: right;'>
+            <a class="black-text" style="font-weight:300;font-size:1.rem;">
+              Esqueceu a senha?
+            </a>
+          </label>
+        </div>
+        <br/>
+        <div class='row'>
+          <a type='submit' name='btn_login' (click)="login()"
+            class='col s12 btn btn-large waves-light waves-effect #ef9a9a red lighten-2'
+            style="font-weight:300;font-size:1.rem;">Entrar</a>
+        </div>
+        <br/>
+      </form>
+    </div>
+  </div>
+</div>
