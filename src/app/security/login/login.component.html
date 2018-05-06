@@ -8,7 +8,7 @@
   <div class="container">
     <div class="z-depth-1 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-      <form class="col s12" method="post" [formGroup]="loginForm">
+      <form class="col s12" [formGroup]="loginForm">
         <div class='row'>
           <div class='col s12'>
 
@@ -17,13 +17,13 @@
 
         <div class='row'>
           <div class='input-field col s12'>
-            <input type='email' formControlName="email">
+            <input type='email' formControlName="email" required>
             <label for='email'>Email</label>
           </div>
         </div>
         <div class='row'>
           <div class='input-field col s12'>
-            <input type='password' formControlName="email">
+            <input type='password' value="123" formControlName="password" required>
             <label for='password'>Senha</label>
           </div>
           <label style='float: right;'>
@@ -34,9 +34,9 @@
         </div>
         <br/>
         <div class='row'>
-          <a type='submit' name='btn_login' (click)="login()"
+          <button type='submit' name='btn_login' (click)="login()" [disabled]="loginForm.invalid"
             class='col s12 btn btn-large waves-light waves-effect #ef9a9a red lighten-2'
-            style="font-weight:300;font-size:1.rem;">Entrar</a>
+            style="font-weight:300;font-size:1.rem;">Entrar</button>
         </div>
         <br/>
       </form>
