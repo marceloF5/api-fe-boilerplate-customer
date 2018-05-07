@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 
+import { SharedModule } from '../../shared/shared.module';
+
 import { LoginComponent } from './login.component';
 
 import { LoginService } from './login.service';
@@ -12,7 +14,8 @@ import { LoginService } from './login.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterializeModule
+    MaterializeModule,
+    SharedModule
   ],
   declarations: [LoginComponent],
 })

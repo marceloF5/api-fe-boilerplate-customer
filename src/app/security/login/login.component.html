@@ -13,12 +13,17 @@
           <div class='col s12'>
 
           </div>
-        </div>
+        </div>     
 
         <div class='row'>
-          <div class='input-field col s12'>
-            <input type='email' formControlName="email" required>
+          <div class='col s12'>
+            <!--input type='email' formControlName="email" required>
             <label for='email'>Email</label>
+          </div-->
+          <mat-form-field>
+            <input matInput placeholder="Enter your email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
           </div>
         </div>
         <div class='row'>

@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterializeModule } from 'angular2-materialize';
 import { RouterModule } from '@angular/router';
 
+import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './security/login/login.module';
 
 import { ROUTES } from './app.routes';
@@ -22,7 +24,9 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,  
     FormsModule, 
     ReactiveFormsModule,  
+    BrowserAnimationsModule,
     MaterializeModule,
+    SharedModule,
     LoginModule.forRoot(),    
     RouterModule.forRoot(ROUTES)
   ],

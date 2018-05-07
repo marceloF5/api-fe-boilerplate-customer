@@ -1,14 +1,15 @@
-import { Component, OnInit, AfterContentInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { MaterializeDirective, MaterializeAction } from "angular2-materialize";
-import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControlName, FormControl } from '@angular/forms';
 
 import { LoginService } from './login.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login',  
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit, AfterContentInit {
+export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   input: any;
@@ -26,20 +27,12 @@ export class LoginComponent implements OnInit, AfterContentInit {
 
   }
 
-  ngAfterContentInit() {
-    //this.input = this.control;
-    /*if(this.input === undefined) {
-      throw new Error('Esse componente precisa ser usado com uma diretiva ngModel ou formControlName');
-    }*/
-  }
+  email = new FormControl('', [Validators.required, Validators.email]);
 
-  login() {     
-    this.loginService.handleLogin();
-  }
-
-  validade(): boolean {  
-    console.log(this.loginForm.invalid);
-    return this.loginForm.invalid;
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+        this.email.hasError('email') ? 'Not a valid email' :
+            '';
   }
 
 }
