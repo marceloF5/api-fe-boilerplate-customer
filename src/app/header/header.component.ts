@@ -11,11 +11,14 @@ export class HeaderComponent implements OnInit {
   showMenu: boolean = false;  
   dropdownActions = new EventEmitter<MaterializeAction>();
 
-
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {    
-    this.dropdownActions.emit({action: 'dropdown', params: null});
+    this.dropdownActions.emit({ action: 'dropdown', params: null });
     this.loginService.showMenuEmmiter.subscribe(showMenu => this.showMenu = showMenu);
+  }
+
+  logout() {
+    this.loginService.handlerLogout();
   }
 }
