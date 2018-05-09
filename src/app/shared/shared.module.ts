@@ -1,18 +1,27 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SnackbarComponent } from './messages/snackbar/snackbar.component';
+import { NotificationService } from '../shared/messages/notification.service';
 
-//import { MatInputModule, MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatMenuModule, MatFormFieldModule, MatCheckboxModule } from '@angular/material';
-//import { LoginModule } from './../security/login/login.module';
+import { LoggedInGuard } from '../security/loggedin.guard'; 
 
 @NgModule({
   imports: [
-    //CommonModule, MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatMenuModule, MatFormFieldModule, MatCheckboxModule, MatInputModule,
-    //LoginModule.forRoot()
+    CommonModule
   ],
-  declarations: [],
+  declarations: [SnackbarComponent],
   exports: [
-    //MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatMenuModule, MatFormFieldModule, MatCheckboxModule, MatInputModule,
-    //LoginModule
+    SnackbarComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+  static forRoot(): ModuleWithProviders{
+    return {
+        ngModule: SharedModule,
+        providers: [
+            LoggedInGuard,
+            NotificationService
+        ]
+    }
+}
+}

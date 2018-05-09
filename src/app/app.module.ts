@@ -14,12 +14,14 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    NotFoundComponent,
   ],
   imports: [    
     BrowserModule, 
@@ -28,7 +30,7 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,  
     BrowserAnimationsModule,
     MaterializeModule,
-    SharedModule,
+    SharedModule.forRoot(),
     LoginModule.forRoot(),    
     RouterModule.forRoot(ROUTES)
   ],

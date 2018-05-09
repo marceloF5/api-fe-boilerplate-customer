@@ -1,7 +1,8 @@
 export interface IUser {
-  id: string,
-  email: string,
-  name: string,
-  password: string,
-  accessToken: string
+  payload: {
+    id: string,
+    email: string,
+    name: string,  
+    accessToken: string
+  }
 }

@@ -1,15 +1,18 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 
 import { IUser } from './user.model';
+
+export const PATH_LOGIN = '/login';
 
 @Injectable()
 export class LoginService {
 
-  showMenuEmmiter = new EventEmitter<boolean>();
-  user = new EventEmitter<IUser>();
+  logged = new EventEmitter<boolean>();
+  user: IUser;
 
   constructor(private http: HttpClient,
               private router: Router) { }
@@ -18,24 +21,24 @@ export class LoginService {
     return this.user !== undefined;
   }
             
-  navigateTo(path) {
-    if(this.isLoggedIn()) {
-      console.log('Entrou aqui')
-      this.handlerLogout();
+  navigateTo(path?: string) {
+    if(!this.isLoggedIn()) {      
+      this.handlerLogout(path);
     } else {
-      this.showMenuEmmiter.emit(true);
+      this.logged.emit(true);
       this.router.navigate([`${path}`]);
     }
   }
 
   handlerLogin(email: string, password: string): Observable<IUser> {     
     return this.http.post<IUser>(`http://localhost:3001/api/token/create`,
-                {email: email, password: password})    
+                      {email: email, password: password})  
+                    .do(user => this.user = user)
   }
 
-  handlerLogout() {
-    this.showMenuEmmiter.emit(false);
-    this.router.navigate(['/login']);
+  handlerLogout(path: string) {
+    this.logged.emit(false);
+    this.router.navigate([PATH_LOGIN, `/${path}`]);
   }
 
 }

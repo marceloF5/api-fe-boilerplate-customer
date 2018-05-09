@@ -15,10 +15,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {    
     this.dropdownActions.emit({ action: 'dropdown', params: null });
-    this.loginService.showMenuEmmiter.subscribe(showMenu => this.showMenu = showMenu);
+    this.loginService.logged.subscribe(logged => this.showMenu = logged);    
   }
 
   logout() {
-    this.loginService.handlerLogout();
+    this.loginService.handlerLogout('/login');
   }
 }
