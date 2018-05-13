@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { LoginService } from '../security/login/login.service';
 import { MaterializeAction } from 'angular2-materialize';
+
+import { LoginService } from '../security/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.handlerLogout('/login');
+    this.loginService.handlerLogout();
   }
 }

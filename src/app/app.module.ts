@@ -14,6 +14,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { UserDetailComponent } from './header/user-detail/user-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    NotFoundComponent,
+    UserDetailComponent,
+    NotFoundComponent,  
   ],
   imports: [    
     BrowserModule, 

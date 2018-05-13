@@ -10,7 +10,7 @@
         </ul>	
         <ul class="hide-on-med-and-down right">
           <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']">Configurações</a></li>
-          <li><a class="black-text" style="font-weight:300;font-size:1.rem;" (click)="logout()"><i class="material-icons">exit_to_app</i></a></li>
+          <app-user-detail></app-user-detail>
         </ul>				          
       </div>
     </nav>
@@ -21,5 +21,5 @@
     <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">code</i><span>Produtos</span></a></li>
     <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">nature_people</i><span>Clientes</span></a></li>
     <li><a class="black-text" style="font-weight:300;font-size:1.rem;" [routerLink]="['/products']"><i class="material-icons">attach_money</i><span>Financeiro</span></a></li>        
-  </ul>       
+  </ul>         
 </header>

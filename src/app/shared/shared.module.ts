@@ -1,17 +1,23 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterializeModule } from 'angular2-materialize';
+
 import { SnackbarComponent } from './messages/snackbar/snackbar.component';
 import { NotificationService } from '../shared/messages/notification.service';
 
 import { LoggedInGuard } from '../security/loggedin.guard'; 
+import { LoggedOutGuard } from '../security/loggedout.guard';
+import { ModalComponent } from './modal/modal.component';
+import { ModalService } from './messages/modal.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, 
+    MaterializeModule
   ],
-  declarations: [SnackbarComponent],
+  declarations: [SnackbarComponent, ModalComponent],
   exports: [
-    SnackbarComponent
+    SnackbarComponent, ModalComponent
   ]
 })
 export class SharedModule { 
@@ -20,7 +26,9 @@ export class SharedModule {
         ngModule: SharedModule,
         providers: [
             LoggedInGuard,
-            NotificationService
+            LoggedOutGuard,
+            NotificationService,
+            ModalService
         ]
     }
 }

@@ -8,9 +8,10 @@ import { LoggedInGuard } from './security/loggedin.guard';
 import { Routes } from '@angular/router';
 
 export const ROUTES: Routes = [
-    {path: '', component: HomeComponent},     
+    {path: '', component: HomeComponent, canActivate: [LoggedInGuard]},     
     {path: 'login/:to', component: LoginComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'products', loadChildren: './products/products.module#ProductsModule', canLoad: [LoggedInGuard]},    
+    {path: 'products', loadChildren: './products/products.module#ProductsModule', 
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},    
     {path: '**', component: NotFoundComponent}    
 ];

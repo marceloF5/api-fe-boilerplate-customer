@@ -28,13 +28,12 @@ export class LoginComponent implements OnInit {
       email: this.fb.control('', [Validators.required, Validators.email]),
       password: this.fb.control('', [Validators.required])
     })
-    this.navigateTo = this.activatedRoute.snapshot.params['to'] || '/';
-    console.log(this.navigateTo);
+    this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/');  
     this.loginService.logged.emit(false);
   }
 
   login() {          
-    this.loginService.handlerLogin(this.loginForm.value.email, this.loginForm.value.password)
+    let x = this.loginService.handlerLogin(this.loginForm.value.email, this.loginForm.value.password)
                      .subscribe(
                         user => this.notificationService.notify(`Welcome ${user.payload.name}`),                          
                         response => {//HttpErrorResponse  
@@ -45,9 +44,9 @@ export class LoginComponent implements OnInit {
                           }                          
                         },
                         () => {
-                          this.loginService.navigateTo(this.navigateTo)
-                          //this.router.navigate([this.navigateTo])
-                        })
+                          this.router.navigate([atob(this.navigateTo)])
+                        }
+                      )                                          
   }
 
 }

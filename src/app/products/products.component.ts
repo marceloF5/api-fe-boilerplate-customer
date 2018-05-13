@@ -1,16 +1,30 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { DeactivationGuarded } from '../security/loggedout.guard';
+import { NotificationService } from '../shared/messages/notification.service';
 import { LoginService } from '../security/login/login.service';
-import { MaterializeDirective } from 'angular2-materialize';
+import { ModalService } from '../shared/messages/modal.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',  
 })
-export class ProductsComponent implements OnInit {
-    
-  constructor() { }
+export class ProductsComponent implements OnInit, DeactivationGuarded  {
+  
+  constructor(private loginService: LoginService,
+    private modalService: ModalService) { }
 
-  ngOnInit() { 
+  ngOnInit() { }
+
+  isProductCompleted(): boolean {
+    return false;
   }
 
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> { 
+    this.modalService.open('x');
+    console.log('canDeactivate has fired in the component!');
+    console.log(this.modalService.navigateAwaySelection$);
+    return this.modalService.navigateAwaySelection$;
+  }
 }
