@@ -13,7 +13,7 @@ import { ModalService } from '../shared/messages/modal.service';
 export class ProductsComponent implements OnInit, DeactivationGuarded  {
   
   constructor(private loginService: LoginService,
-    private modalService: ModalService) { }
+              private modalService: ModalService) { }
 
   ngOnInit() { }
 
@@ -22,9 +22,7 @@ export class ProductsComponent implements OnInit, DeactivationGuarded  {
   }
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> { 
-    this.modalService.open('x');
-    console.log('canDeactivate has fired in the component!');
-    console.log(this.modalService.navigateAwaySelection$);
+    this.modalService.open('default-modal');
     return this.modalService.navigateAwaySelection$;
   }
 }

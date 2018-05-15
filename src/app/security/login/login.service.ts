@@ -35,9 +35,13 @@ export class LoginService {
                     })
   }
 
-  handlerLogout() {    
-    //this.logged.emit(false);
-    this.router.navigate([PATH_LOGIN]);
+  handlerProducts(): Observable<any> {
+    let usersFora;    
+    return this.http.get<any>(`http://localhost:3001/api/products/all`);    
   }
 
+  handlerLogout() {
+    this.user = undefined;   
+    this.router.navigate([PATH_LOGIN]);
+  }
 }

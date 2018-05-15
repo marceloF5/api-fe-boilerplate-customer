@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { Subject } from 'rxjs/Subject';
 
-/**
-* ModalService - Service used to interact with the Modal Component
-*/
 @Injectable()
 export class ModalService {
 
@@ -59,12 +56,11 @@ export class ModalService {
   open(modalId: string): void {
     let modal = this.findModal(modalId);
 
-    /*if (modal) {
+    if (modal) {
       setTimeout(() => {
-        modal.isOpen = true;
+        modal.openModal();
       }, 250);
-    }*/
-    modal.openModal();
+    }    
   }
 
   /**

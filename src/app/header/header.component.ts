@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
+import { Observable } from 'rxjs/Observable';
 
 import { LoginService } from '../security/login/login.service';
 

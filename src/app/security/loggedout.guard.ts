@@ -11,8 +11,7 @@ export class LoggedOutGuard implements CanDeactivate<DeactivationGuarded> {
 
   constructor() { } 
 
-  canDeactivate(component: DeactivationGuarded): Observable<boolean> | Promise<boolean> | boolean { 
-    console.log('ola')   
+  canDeactivate(component: DeactivationGuarded): Observable<boolean> | Promise<boolean> | boolean {     
     return component.canDeactivate ? component.canDeactivate() : true;
   }
 }

@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {          
-    let x = this.loginService.handlerLogin(this.loginForm.value.email, this.loginForm.value.password)
+    this.loginService.handlerLogin(this.loginForm.value.email, this.loginForm.value.password)
                      .subscribe(
                         user => this.notificationService.notify(`Welcome ${user.payload.name}`),                          
                         response => {//HttpErrorResponse  
-                          if(response.error.message !== undefined) {
+                          if(response.error.message !== undefined) {                            
                             this.notificationService.notify(response.error.message)                
                           } else {
                             this.notificationService.notify(`Application temporarily out.`)                
