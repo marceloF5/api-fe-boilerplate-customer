@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterializeModule } from 'angular2-materialize';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './security/login/login.module';
@@ -27,6 +28,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [    
     BrowserModule, 
+    HttpModule,
     HttpClientModule, 
     FormsModule, 
     ReactiveFormsModule,  
@@ -34,7 +36,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MaterializeModule,
     SharedModule.forRoot(),
     LoginModule.forRoot(),    
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules}),      
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,11 +11,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const loginService = this.injector.get(LoginService);  
-        if(loginService.isLoggedIn()) {
+        if(loginService.isLoggedIn()) {            
             const authRequest = request.clone({setHeaders: {'Authorization': loginService.user.payload.token}});                      
             return next.handle(authRequest);
         } else {
             return next.handle(request);    
-        }                
+        }               
     }
 }

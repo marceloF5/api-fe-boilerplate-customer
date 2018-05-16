@@ -27,5 +27,5 @@ export class LoginModule {
             LoginService            
         ]
     }
-}
+  }
 }

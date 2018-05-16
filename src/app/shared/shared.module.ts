@@ -4,12 +4,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterializeModule } from 'angular2-materialize';
 
 import { SnackbarComponent } from './messages/snackbar/snackbar.component';
+
+import { ProductsService } from '../products/products.service';
 import { NotificationService } from '../shared/messages/notification.service';
+import { ModalService } from './messages/modal.service';
 
 import { LoggedInGuard } from '../security/loggedin.guard'; 
 import { LoggedOutGuard } from '../security/loggedout.guard';
 import { ModalComponent } from './modal/modal.component';
-import { ModalService } from './messages/modal.service';
+
 import { AuthInterceptor } from '../security/auth.interceptor';
 
 @NgModule({
@@ -29,8 +32,9 @@ export class SharedModule {
         providers: [
             LoggedInGuard,
             LoggedOutGuard,
+            ProductsService,
             NotificationService,
-            ModalService,
+            ModalService,            
             { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
         ]
     }

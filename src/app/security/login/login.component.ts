@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
 
   login() {          
     this.loginService.handlerLogin(this.loginForm.value.email, this.loginForm.value.password)
-                     .subscribe(
+                     .subscribe(                        
                         user => this.notificationService.notify(`Welcome ${user.payload.name}`),                          
-                        response => {//HttpErrorResponse  
+                        response => {//HttpErrorResponse 
                           if(response.error.message !== undefined) {                            
                             this.notificationService.notify(response.error.message)                
                           } else {

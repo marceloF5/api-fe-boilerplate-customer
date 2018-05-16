@@ -12,12 +12,24 @@ export const PATH_LOGIN = '/login';
 export class LoginService {
 
   logged = new EventEmitter<boolean>();
-  user: IUser;
+  user: IUser;  
 
   constructor(private http: HttpClient,
               private router: Router) { }
 
-  isLoggedIn(): boolean {
+  validateToken(token) {          
+    this.http.post<boolean>(`http://localhost:3001/api/token/verify`,
+              {token: token})
+             .subscribe(status => console.log('status'),
+                        response => {
+                          console.log('CHEGOU AQUI')
+                          this.user = undefined}
+                        )    
+             .unsubscribe()                        
+  }
+
+  isLoggedIn(): boolean {  
+    //this.validateToken(this.user.payload.token);    
     return this.user !== undefined;
   }
 
@@ -33,11 +45,6 @@ export class LoginService {
                       this.logged.emit(true);
                       this.user = user
                     })
-  }
-
-  handlerProducts(): Observable<any> {
-    let usersFora;    
-    return this.http.get<any>(`http://localhost:3001/api/products/all`);    
   }
 
   handlerLogout() {

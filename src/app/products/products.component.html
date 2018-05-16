@@ -12,56 +12,9 @@
         <input placeholder="Qual produto você está procurando?" id="first_name" type="text" class="validate">
       </div>
     </div>
-    <div class="row">
-      <div class="col xs12 s12 m6 l3">
-        <div class="card">
-          <div class="card-image">
-            <img class="materialboxed" src="assets/images/flor_2.jpg">
-            <a class="btn-floating halfway-fab waves-effect waves-light #ef9a9a red lighten-2">
-              <i class="material-icons">edit</i>
-            </a>
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">La La Land
-              <i class="material-icons right">more_vert</i>
-            </span>
-            <div class="row">
-              <div class="col xs4 s4 m4 l4">
-                <p class="" style="font-weight:300;font-size:0.8rem;">Pequeno</p>
-                <p class="" style="font-weight:300;font-size:0.8rem;">
-                  <strong>R$ 100,00</strong>
-                </p>
-              </div>
-              <div class="col xs4 s4 m4 l4">
-                <p class="" style="font-weight:300;font-size:0.8rem;">Médio</p>
-                <p class="" style="font-weight:300;font-size:0.8rem;">
-                  <strong>R$ 100,00</strong>
-                </p>
-              </div>
-              <div class="col xs4 s4 m4 l4">
-                <p class="" style="font-weight:300;font-size:0.8rem;">Grande</p>
-                <p class="" style="font-weight:300;font-size:0.8rem;">
-                  <strong>R$ 100,00</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Detalhes
-              <i class="material-icons right">close</i>
-            </span>
-            <p class="" style="font-weight:300;font-size:1.rem;">Estoque:
-              <strong>14</strong>
-            </p>
-            <p class="" style="font-weight:300;font-size:1.rem;">Tempo Mínimo de Entrega:
-              <strong>3 horas</strong>
-            </p>
-            <p class="" style="font-weight:300;font-size:1.rem;">Descrição:
-              <strong>Bouquet mix rosas champanhe e rosas - disponível em 3 tamanhos P: 12 ROSAS / M: 24 ROSAS / G 36 ROSAS - *Podem
-                ocorrer alterações de montagem e embalagem, conforme disponibilidade do florista.</strong>
-            </p>
-          </div>
-        </div>
+    <div class="row">          
+      <div *ngFor="let product of products.payload" class="col xs12 s12 m6 l3">
+        <app-product [product]="product"></app-product>
       </div>
     </div>
   </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../security/login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -7,21 +6,8 @@ import { LoginService } from '../security/login/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor() { }
 
   ngOnInit() {        
-  }
-
-  testeReq() {
-    let usersFora;
-    this.loginService.handlerProducts()
-      .subscribe(
-        users => {
-          console.log(users);
-          usersFora = users;
-        },
-        response => {//HttpErrorResponse  
-          console.log(response);                               
-        });  
   }
 }
