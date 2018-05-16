@@ -12,12 +12,11 @@ import { ModalService } from '../shared/messages/modal.service';
 })
 export class ProductsComponent implements OnInit, DeactivationGuarded  {
   
-  constructor(private loginService: LoginService,
-              private modalService: ModalService) { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() { }
 
-  isProductCompleted(): boolean {
+  isProductCompleted(): boolean {    
     return false;
   }
 
