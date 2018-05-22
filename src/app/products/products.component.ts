@@ -11,38 +11,38 @@ import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',  
+  templateUrl: './products.component.html',
 })
 export class ProductsComponent implements OnInit, DeactivationGuarded  {
 
   products: IProduct[] = [];
-  
+
   constructor(private productsService: ProductsService,
-              private loginService: LoginService,                            
+              private loginService: LoginService,
               private modalService: ModalService,
               private notificationService: NotificationService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.productsService
       .handlerGetAllProducts()
-      .subscribe( 
+      .subscribe(
         products => this.products = products,
         response => {
           if (response.status === 401) {
             this.loginService.redirectToLogin('products');
           }
           this.notificationService.notify(response.error.message)
-        } 
+        }
       )
   }
 
-  isProductCompleted(): boolean {    
+  isProductCompleted(): boolean {
     return false;
   }
 
-  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {     
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
     if (this.products.length !== 0) {
-      this.modalService.open('default-modal');
+      this.modalService.open('default-modal', 'Sair', 'Deseja sair da Aplicação?');
       return this.modalService.navigateAwaySelection$;
     } else {
       return true;

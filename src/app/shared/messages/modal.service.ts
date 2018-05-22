@@ -53,14 +53,14 @@ export class ModalService {
   * open - Opens the specified modal based on the suplied modal id
   * @param { String } modalId The id of the modal to open
   */
-  open(modalId: string): void {
+  open(modalId: string, title: string, message: string): void {
     let modal = this.findModal(modalId);
 
     if (modal) {
       setTimeout(() => {
-        modal.openModal();
+        modal.openModal(title, message);
       }, 250);
-    }    
+    }
   }
 
   /**
@@ -75,7 +75,7 @@ export class ModalService {
       this.modals.splice(this.modals.indexOf(modal), 1);
     }
 
-    this.modals.push(newModal);    
+    this.modals.push(newModal);
   }
 
 }

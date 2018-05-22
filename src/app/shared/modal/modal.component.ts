@@ -18,13 +18,12 @@ export class ModalComponent implements OnInit {
   isOpen: boolean = false;
 
   modalActions = new EventEmitter<MaterializeAction>();
-  //message: string = 'Deseja sair da Aplicação?';
 
-  //@Input() closebtn: boolean;
   @Input() modalId: string;
-  @Input() title: string;
-  @Input() message: string;  
   @Input() blocking: boolean;
+
+  title: string;
+  message: string;
 
   constructor(private modalService: ModalService) { }
 
@@ -32,8 +31,10 @@ export class ModalComponent implements OnInit {
     this.modalService.registerModal(this);
   }
 
-  openModal() {  
-    this.modalActions.emit({ action:"modal", params:['open'] });     
+  openModal(title: string, message: string) {
+    this.title = title;
+    this.message = message;
+    this.modalActions.emit({ action:"modal", params:['open'] });
   }
 
   closeModal() {
