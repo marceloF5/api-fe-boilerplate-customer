@@ -17,6 +17,13 @@ export class LoginService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
+  addLocalStorage(user) {
+    localStorage.id = user.payload.id;
+    localStorage.email = user.payload.email;
+    localStorage.token = user.payload.token;
+    localStorage.name = user.payload.name;
+  }
+
   validateToken(token: string): Observable<boolean> {
     return this.http.post<boolean>(`http://localhost:3001/api/token/verify`,
                 {token: token})
@@ -33,15 +40,14 @@ export class LoginService {
     // call function to verify token expired and check if user is using application.
     // this.validateToken(localStorage.token).subscribe();
     if (localStorage.id !== undefined) {
-      // this.logged.emit(true);
       return true;
     }
     return this.user !== undefined;
   }
 
   redirectToLogin(path) {
-    this.logged.emit(false);
     localStorage.clear();
+    this.logged.emit(false);
     this.router.navigate(['/login', btoa(path)])
   }
 
@@ -49,14 +55,9 @@ export class LoginService {
     return this.http.post<IUser>(`http://localhost:3001/api/token/create`,
                       {email: email, password: password})
                     .do(user => {
-
                       this.logged.emit(true);
-                      localStorage.id = user.payload.id;
-                      localStorage.email = user.payload.email;
-                      localStorage.token = user.payload.token;
-                      localStorage.name = user.payload.name;
-
-                      this.user = user
+                      this.addLocalStorage(user);
+                      this.user = user;
                     })
   }
 
