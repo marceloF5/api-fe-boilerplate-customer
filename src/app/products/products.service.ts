@@ -13,7 +13,7 @@ export class ProductsService {
                 private router: Router) { }
 
     handlerGetAllProducts(): Observable<IProduct[]> {
-        let usersFora;
+        // let usersFora;
         return this.http.get<IProduct[]>(`http://localhost:3001/api/products/all`);
     }
 

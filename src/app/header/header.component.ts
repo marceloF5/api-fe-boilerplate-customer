@@ -6,18 +6,18 @@ import { LoginService } from '../security/login/login.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',  
+  templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
 
-  showMenu: boolean = false;  
+  showMenu: boolean = false;
   dropdownActions = new EventEmitter<MaterializeAction>();
 
   constructor(private loginService: LoginService) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.dropdownActions.emit({ action: 'dropdown', params: null });
-    this.loginService.logged.subscribe(logged => this.showMenu = logged);    
+    this.loginService.logged.subscribe(logged => this.showMenu = logged);
   }
 
   logout() {

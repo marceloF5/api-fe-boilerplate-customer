@@ -11,9 +11,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const loginService = this.injector.get(LoginService);
-        // verify token setted in LocalStorage
+
         if(loginService.isLoggedIn()) {
-            const authRequest = request.clone({setHeaders: {'Authorization': loginService.user.payload.token}});
+            const token = loginService.user !== undefined ? loginService.user.payload.token : localStorage.token;
+            const authRequest = request.clone({setHeaders: {'Authorization': token}});
             return next.handle(authRequest);
         } else {
             return next.handle(request);
