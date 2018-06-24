@@ -17,14 +17,7 @@ export class LoginService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
-  addLocalStorage(user) {
-    localStorage.id = user.payload.id;
-    localStorage.email = user.payload.email;
-    localStorage.token = user.payload.token;
-    localStorage.name = user.payload.name;
-  }
-
-  validateToken(token: string): Observable<boolean> {
+  private validateToken(token: string): Observable<boolean> {
     return this.http.post<boolean>(`http://localhost:3001/api/token/verify`,
                 {token: token})
                .do(status => {
@@ -38,32 +31,46 @@ export class LoginService {
 
   isLoggedIn(): boolean {
     // call function to verify token expired and check if user is using application.
-    // this.validateToken(localStorage.token).subscribe();
-    if (localStorage.id !== undefined) {
+    // this.validateToken(localStorage.token).subscribe();    
+    if (localStorage.id !== undefined || this.user !== undefined) {      
+      this.logged.emit(true);
       return true;
     }
-    return this.user !== undefined;
+    return false;
   }
 
   redirectToLogin(path) {
-    localStorage.clear();
-    this.logged.emit(false);
+    this.handlerDelLocalStorage();    
     this.router.navigate(['/login', btoa(path)])
+  }
+
+  private handlerAddLocalStorage(user) {
+    this.user = user;
+    this.logged.emit(true);
+
+    localStorage.setItem('id', user.payload.id)
+    localStorage.setItem('email', user.payload.email)
+    localStorage.setItem('token', user.payload.token)
+    localStorage.setItem('name', user.payload.name)    
+  }
+
+  private handlerDelLocalStorage() {  
+    this.user = undefined;  
+    this.logged.emit(false);
+
+    localStorage.clear();
   }
 
   handlerLogin(email: string, password: string): Observable<IUser> {
     return this.http.post<IUser>(`http://localhost:3001/api/token/create`,
                       {email: email, password: password})
-                    .do(user => {
-                      this.logged.emit(true);
-                      this.addLocalStorage(user);
-                      this.user = user;
+                    .do(user => {                    
+                      this.handlerAddLocalStorage(user);                      
                     })
   }
 
   handlerLogout() {
-    localStorage.clear();
-    this.user = undefined;
+    this.handlerDelLocalStorage();    
     this.router.navigate([PATH_LOGIN]);
   }
 }
